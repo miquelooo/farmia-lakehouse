@@ -1,0 +1,13 @@
+# Inventario local — snapshots CSV en landing -> bronze.
+dataset_id: inventory_stock_snapshots
+source_system: inventory
+mode: batch
+engine: autoloader
+format: csv
+schema_file: schemas/inventory_stock_snapshots.ddl
+reader_options:
+  header: "true"                    # CSV con cabecera: nombres de columna en la primera fila
+target:
+  schema: bronze_inventory
+  table: stock_snapshots
+  partition_by: []

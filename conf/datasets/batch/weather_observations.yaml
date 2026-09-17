@@ -1,0 +1,10 @@
+# Meteorología externa — ficheros Parquet (auto-descriptivos, sin schema_file).
+dataset_id: weather_observations
+source_system: weather
+mode: batch
+engine: autoloader
+format: parquet
+target:
+  schema: bronze_weather
+  table: observations
+  partition_by: []

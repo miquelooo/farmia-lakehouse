@@ -1,0 +1,11 @@
+# Imágenes de campos (dron) — binaryFile en landing -> bronze (un Parquet compactado).
+dataset_id: crop_field_images
+source_system: fields
+mode: batch
+engine: autoloader
+format: binaryFile
+coalesce: 1                          # compactar en 1 Parquet por lote (small-file problem)
+target:
+  schema: bronze_fields
+  table: crop_images
+  partition_by: [label]              # etiqueta derivada de la carpeta (healthy/pest)

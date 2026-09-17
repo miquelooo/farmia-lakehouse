@@ -1,0 +1,11 @@
+# Proveedores / logística — ficheros Avro en landing -> bronze.
+dataset_id: logistics_shipments
+source_system: logistics
+mode: batch
+engine: autoloader
+format: avro
+schema_file: schemas/logistics_shipments.avsc
+target:
+  schema: bronze_logistics
+  table: shipments
+  partition_by: []

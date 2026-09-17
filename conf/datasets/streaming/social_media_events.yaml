@@ -1,0 +1,9 @@
+# Redes sociales — MULTIPLEX: varios topics -> una tabla (key/value binarios, se estructura en silver).
+dataset_id: social_media_events
+source_system: social
+mode: streaming
+subscribe_pattern: 'farmia\.social\..+'    # cualquier topic farmia.social.<plataforma>
+target:
+  schema: bronze_social
+  table: social_events
+  partition_by: [_kafka_topic]             # una partición por topic de origen

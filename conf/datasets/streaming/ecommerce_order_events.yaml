@@ -1,0 +1,12 @@
+# Eventos de pedidos e-commerce — Avro + Schema Registry (wire format Confluent).
+dataset_id: ecommerce_order_events
+source_system: ecommerce
+mode: streaming
+format: avro
+topic: farmia.ecommerce.order-events
+value_subject: farmia.ecommerce.order-events-value
+schema_file: schemas/ecommerce_order_events.avsc
+target:
+  schema: bronze_ecommerce
+  table: order_events
+  partition_by: []

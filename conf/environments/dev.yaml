@@ -1,0 +1,10 @@
+# Entorno de ejecución (dev). Nada de esto vive en el YAML de cada dataset.
+# Valores congelados por el smoke test del entorno FarmIA.
+catalog: farmia
+landing_uri: "abfss://landing@farmiaadls.dfs.core.windows.net"
+lakehouse_uri: "abfss://lakehouse@farmiaadls.dfs.core.windows.net"
+raw_zone: raw
+bronze_zone: bronze
+checkpoints_prefix: _checkpoints
+schemas_prefix: _schemas
+kafka_secret_scope: farmia-kafka

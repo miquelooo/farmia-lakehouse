@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FarmIA dataset config",
+  "type": "object",
+  "required": ["dataset_id", "source_system", "mode", "target"],
+  "additionalProperties": false,
+  "properties": {
+    "dataset_id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "source_system": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "mode": { "enum": ["batch", "streaming"] },
+    "engine": { "enum": ["autoloader", "spark"] },
+    "format": { "enum": ["json", "csv", "parquet", "avro", "binaryFile"] },
+    "schema_file": { "type": "string" },
+    "reader_options": { "type": "object" },
+    "schema_evolution_mode": {
+      "enum": ["addNewColumns", "rescue", "failOnNewColumns", "none"]
+    },
+    "coalesce": { "type": "integer", "minimum": 1 },
+    "topic": { "type": "string" },
+    "subscribe_pattern": { "type": "string" },
+    "value_subject": { "type": "string" },
+    "key_subject": { "type": "string" },
+    "trigger_seconds": { "type": "integer", "minimum": 1 },
+    "target": {
+      "type": "object",
+      "required": ["schema", "table"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "table": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "partition_by": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "mode": { "const": "batch" } } },
+      "then": { "required": ["format"] }
+    },
+    {
+      "if": { "properties": { "mode": { "const": "streaming" } } },
+      "then": {
+        "oneOf": [
+          { "required": ["topic"] },
+          { "required": ["subscribe_pattern"] }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+# Sensores IoT — JSON singleplex (un topic -> una tabla).
+dataset_id: iot_sensor_readings
+source_system: iot
+mode: streaming
+format: json
+topic: farmia.iot.sensor-readings
+schema_file: schemas/iot_sensor_readings.ddl
+target:
+  schema: bronze_iot
+  table: sensor_readings
+  partition_by: []

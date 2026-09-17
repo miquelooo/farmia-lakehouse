@@ -1,0 +1,11 @@
+# Eventos de la app móvil — JSON singleplex.
+dataset_id: customer_app_events
+source_system: app
+mode: streaming
+format: json
+topic: farmia.app.customer-events
+schema_file: schemas/customer_app_events.ddl
+target:
+  schema: bronze_app
+  table: customer_events
+  partition_by: []

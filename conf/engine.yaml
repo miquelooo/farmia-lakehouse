@@ -1,0 +1,5 @@
+# Ajustes globales del motor (por defecto). Cada dataset puede sobrescribir lo suyo.
+defaults:
+  batch_engine: autoloader          # autoloader | spark
+  schema_evolution_mode: addNewColumns
+  streaming_trigger_seconds: null   # null => availableNow ; entero => processingTime continuo

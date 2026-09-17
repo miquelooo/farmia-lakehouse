@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "name": "OrderEvent",
+  "namespace": "farmia.ecommerce",
+  "fields": [
+    {"name": "order_id", "type": "string"},
+    {"name": "customer_id", "type": "string"},
+    {"name": "event_ts", "type": "string"},
+    {"name": "status", "type": "string"},
+    {"name": "amount", "type": "double"},
+    {"name": "currency", "type": "string"}
+  ]
+}

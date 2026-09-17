@@ -1,0 +1,7 @@
+# Job batch horario: ingesta los 5 datasets de ficheros.
+datasets:
+  - ecommerce_sales_orders
+  - inventory_stock_snapshots
+  - weather_observations
+  - logistics_shipments
+  - crop_field_images

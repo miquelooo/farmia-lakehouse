@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Tests / tooling
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Databricks / secretos
+*.whl
+client.properties
+client_.properties
+.env
+*.pem
+
+# SO / IDE
+.DS_Store
+.idea/
+.vscode/
+
+# Guía visual: apoyo personal, NO forma parte del entregable
+docs/guia-visual.html

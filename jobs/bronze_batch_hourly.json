@@ -1,0 +1,19 @@
+{
+  "name": "farmia_bronze_batch_hourly",
+  "tags": {"proyecto": "farmia", "capa": "bronze", "modo": "batch"},
+  "schedule": {
+    "quartz_cron_expression": "0 0 * * * ?",
+    "timezone_id": "Europe/Madrid",
+    "pause_status": "PAUSED"
+  },
+  "max_concurrent_runs": 1,
+  "tasks": [
+    {
+      "task_key": "run_batch_hourly",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Repos/miquel/farmia-lakehouse/notebooks/10_run_batch",
+        "source": "WORKSPACE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# Ventas online (plataforma e-commerce) — ficheros JSON (JSON Lines) en landing -> bronze.
+dataset_id: ecommerce_sales_orders
+source_system: ecommerce
+mode: batch
+engine: autoloader
+format: json
+schema_file: schemas/ecommerce_sales_orders.ddl
+schema_evolution_mode: addNewColumns
+target:
+  schema: bronze_ecommerce
+  table: sales_orders
+  partition_by: []

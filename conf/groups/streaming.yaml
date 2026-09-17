@@ -1,0 +1,6 @@
+# Job streaming: levanta las 4 streaming queries de Kafka.
+datasets:
+  - iot_sensor_readings
+  - customer_app_events
+  - social_media_events
+  - ecommerce_order_events

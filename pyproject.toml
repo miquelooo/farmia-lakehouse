@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "farmia_ingest"
+version = "0.1.0"
+description = "Motor de ingesta config-driven (landing->bronze batch + Kafka->bronze streaming) para el lakehouse de FarmIA"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Miquel Moliner" }]
+
+# Dependencias de RUNTIME del motor. Spark/Delta y dbutils los provee el runtime de
+# Databricks (no se declaran aquí). Estas son las que el paquete importa por sí mismo.
+dependencies = [
+    "PyYAML>=6.0",
+    "jsonschema>=4.0",
+]
+
+[project.optional-dependencies]
+# Para desarrollo local y ejecución del engine "spark" fuera de Databricks.
+dev = [
+    "pytest>=7.0",
+]
+local-spark = [
+    "pyspark>=3.5",
+    "delta-spark>=3.1",
+]
+samples = [
+    "Faker>=24.0",
+]
+
+# Entry points de consola: el mismo motor se opera en distintos jobs pasándole
+# qué grupo/datasets cargar (parametrización por job, como pide la tutoría).
+[project.scripts]
+farmia-run-batch = "farmia_ingest.entrypoints.run_batch:main"
+farmia-run-streaming = "farmia_ingest.entrypoints.run_streaming:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+# Empaquetar el JSON Schema de validación junto al código.
+farmia_ingest = ["config/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
